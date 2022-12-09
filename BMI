@@ -1,0 +1,205 @@
+<script language="javascript"> 
+
+window.onload = () => { 
+
+  const button = document.querySelector("#button"); 
+
+  
+
+  button.addEventListener("click", calculateBMI); 
+
+// 버튼 클릭 시 calculateBMI 함수 계산 후 출력 
+
+}; 
+
+  
+
+function calculateBMI() { 
+
+  const height = parseInt(document.querySelector("#height").value); //키 값 
+
+  const weight = parseInt(document.querySelector("#weight").value); //체중 값 
+
+  const result = document.querySelector("#result"); //BMI 결과 값 
+
+  const result1 = document.querySelector("#result1"); //BMI 결과에 따른 내용 
+
+   
+
+  
+
+  if (height === "" || isNaN(height)) { 
+
+    result.innerHTML = "<h6><br><br>키(cm)가 입력되지 않았습니다. 키를 입력해 주세요 !</h6>"; 
+
+  } else if (weight === "" || isNaN(weight)) { 
+
+    result.innerHTML = "<h6><br><br>몸무게(kg)가 입력되지 않았습니다. 몸무게를 입력해 주세요 !</h6>"; 
+
+  } else { 
+
+    const bmi = (weight / ((height * height) / 10000)).toFixed(2); //BMI계산식 
+
+  
+
+    if (bmi <= 18.5) { 
+
+      result.innerHTML = `<br><br><H1>BMI: <span>${bmi}</span></H1><br><br> 당신은 <ins>저체중</ins>입니다.<br> 체중을 증가시켜야합니다.`.big().fontcolor("#81BEF7").bold(); 
+
+      result1.innerHTML = `<br>《저체중을 위한 식이요법》<br><br> 
+
+                               ① 하루에 소량씩 5~6회 섭취하기(식사 3회/간식 3회)<br><br> 
+
+                               ② 식사 전에 음료를 섭취하면 식욕 저하와 포만감을 불러오기 때문에 식사 후에   
+
+  
+
+                 섭취하도록 노력하기 <br><br> 
+
+                               ③ 조금씩 열량을 높이며 먹기(치즈,달걀,잼 추가해서 섭취)<br><br> 
+
+                               ④ 무조건 고지방 음식이 아닌 건강한 식사로 체중 늘리기<br><br> 
+
+                               ⑤ 전곡류, 채소, 과일, 유제품, 저지방 단백질, 견과류, 씨류 자주 많이 섭취하기`.big().bold().fontcolor("#585858"); 
+
+//bmi 계산 값이 18.5 이하일 시 저체중 관련된 내용 출력 
+
+    } else if (bmi <= 23) { 
+
+        result.innerHTML = `<br><br><H1>BMI: <span>${bmi}</span></H1><br><br> 당신은 <ins>정상</ins>입니다.`.fontcolor("#0B3B17").big().bold(); 
+
+        result1.innerHTML = `<br>《모두를 위한 식이요법》<br><br> 
+
+                               ① 규칙적인 식사<br><br> 
+
+                               ② 영양소 골고루 섭취하기<br><br> 
+
+                               ③ 싱겁게 먹어 소금 섭취 줄이기<br><br> 
+
+                               ④ 정상 체중 유지를 위해 하루 적정열량 섭취하기 `.big().bold().fontcolor("#585858"); 
+
+//bmi 계산 값이 23 이하일 시 정상체중 관련된 내용 출력 
+
+ 
+
+    } else if (bmi <= 25) { 
+
+     result.innerHTML = `<br><br><H1>BMI: <span>${bmi}</span></H1><br><br> 당신은 <ins>과체중</ins>입니다.<br> 체중을 감소시켜야합니다.<br> 과체중부터 당뇨병의 위험이 있습니다.`.big().fontcolor("#FF8000").bold(); 
+
+      result1.innerHTML = `<br>《과체중을 위한 식이요법》<br><br> 
+
+                               ① 3끼 식사를 규칙적으로 즐겁게 합니다. (적절한 식사배분을 통해 과식을 피하며 떡, 빵, 과자 등 과다당질 섭취는 제한)<br><br> 
+
+                               ② 식사시간은 20분 이상, 천천히 꼭꼭 씹어 먹습니다.  <br><br> 
+
+                               ③ 조금씩 열량을 높이며 먹기(치즈,달걀,잼 추가해서 섭취)<br><br> 
+
+                               ④ 취침 3시간 전에는 음식 섭취를 제한합니다.<br><br> 
+
+                               ⑤ 가당음료는 피합니다.<br><br> 
+
+                               ⑥ 규칙적으로 운동합니다.`.big().bold().fontcolor("#585858"); 
+
+//bmi 계산 값이 25 이하일 시 과체중 관련된 내용 출력 
+
+    } else if (bmi <= 30) { 
+
+      result.innerHTML = `<br><br><H1>BMI: <span>${bmi}</span></H1><br><br> 당신은 <ins>비만</ins>입니다.<br> 체중을 많이 감소시켜야합니다.<br> 당뇨병의 위험이 있습니다.`.big().fontcolor("#FE642E").bold(); 
+
+      result1.innerHTML = `<br>《비만을 위한 식이요법》<br><br> 
+
+                               ① 3끼 식사를 규칙적으로 즐겁게 합니다.<br>(적절한 식사배분을 통해 과식을 피하며 떡, 빵, 과자 등 과다당질 섭취는 제한)<br><br> 
+
+                               ② 식사시간은 20분 이상, 천천히 꼭꼭 씹어 먹습니다.  <br><br> 
+
+                               ③ 조금씩 열량을 높이며 먹기(치즈,달걀,잼 추가해서 섭취)<br><br> 
+
+                               ④ 취침 3시간 전에는 음식 섭취를 제한합니다.<br><br> 
+
+                               ⑤ 가당음료는 피합니다.<br><br> 
+
+                               ⑥ 규칙적으로 운동합니다.<br><br> 
+
+                               ⑦ 간식 오이, 토마토 등 에너지 함량이 낮은 식품으로 섭취<br><br>  
+
+                               ⑧ 우유제품, 과일, 채소 등을 매일 섭취하여 단백질,비타민, 무기질을 충분히 공급하기<br><br> 
+
+                               ⑨ 과식을 피하며 떡, 빵, 과자 등 과다당질, 탄산음료,쉐이크,식혜, 수정과 섭취는 제한  `.big().bold().fontcolor("#585858"); 
+
+ 
+
+//bmi 계산 값이 30이상일 시 비만 관련된 내용 출력 
+
+ 
+
+    } else { 
+
+       result.innerHTML = `<br><br><H1>BMI: <span>${bmi}</span></H1><br><br> 당신은 <ins>고도비만</ins>입니다 !<br> 건강에 매우 위험한 상태이니 체중을 많이 감소시켜야합니다.<br> 소식하며 꾸준한 운동을 매일 해주세요.<br> 비만은 만병의 근원입니다. 체중관리에 신경써주세요.`.big().fontcolor("#FE642E").bold(); 
+
+      result1.innerHTML = `<br>《고도비만을 위한 식이요법》<br><br> 
+
+                               ① 3끼 식사를 규칙적으로 즐겁게 합니다.<br>(적절한 식사배분을 통해 과식을 피하며 떡, 빵, 과자 등 과다당질 섭취는 제한)<br><br> 
+
+                               ② 식사시간은 20분 이상, 천천히 꼭꼭 씹어 먹습니다.<br><br> 
+
+                               ③ 조금씩 열량을 높이며 먹기(치즈,달걀,잼 추가해서 섭취)<br><br> 
+
+                               ④ 취침 3시간 전에는 음식 섭취를 제한합니다.<br><br> 
+
+                               ⑤ 가당음료는 피합니다.<br><br> 
+
+                               ⑥ 규칙적으로 운동합니다.<br><br> 
+
+                               ⑦ 간식 오이, 토마토 등 에너지 함량이 낮은 식품으로 섭취<br><br>  
+
+                               ⑧ 우유제품, 과일, 채소 등을 매일 섭취하여 단백질,비타민, 무기질을 충분히 공급하기<br><br> 
+
+                               ⑨ 과식을 피하며 떡, 빵, 과자 등 과다당질, 탄산음료,쉐이크,식혜, 수정과 섭취는 제한  `.big().bold().fontcolor("#585858"); 
+
+ 
+
+//bmi 계산 값이 30 이하일 시 고도비만 관련된 내용 출력 
+
+ 
+
+    } 
+
+  } 
+
+} 
+
+</script> 
+
+  
+
+  
+
+  
+
+  <div class="container" style="text-align: center;"><br> // 문자 가운데 정렬 
+
+    <h3 style="font-weight:bolder;  color:#088A4B;">BMI 측정</h3> <hr color="black"><br>// 글씨체, 초록색으로 변경 
+
+  
+
+    신장(cm) : &nbsp; 
+
+    <input type="text" id="height"> //신장 값 넣는 곳 
+
+  
+
+    &nbsp;&nbsp;&nbsp;&nbsp;체중(kg) : &nbsp; 
+
+    <input type="text" id="weight"> //체중 값 넣는 곳 
+
+  
+
+    <br><br><br><button id="button">계산하기</button> //계산 버튼   
+
+    <br><br><div id="result"></div> // BMI 결과 출력 
+
+    <div id="result1"></div> //결과 내용 출력 
+
+  
+
+  </div> 
